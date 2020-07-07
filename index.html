@@ -1,0 +1,53 @@
+<html>
+
+<body>
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://resourceful-wolf-8wa2lh-dev-ed.my.salesforce.com',
+			'https://emads-bot-community-developer-edition.na172.force.com',
+			gslbBaseURL,
+			'00D5w000002sGzi',
+			'E_s_Chat_Team',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-c2-ia5.salesforceliveagent.com/content',
+				deploymentId: '5725w000000g5U2',
+				buttonId: '5735w000000g5Xe',
+				baseLiveAgentURL: 'https://d.la1-c2-ia5.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'E_s_Chat_Team',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://resourceful-wolf-8wa2lh-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+
+</body>
+</html>
