@@ -18,6 +18,7 @@
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 		
+		
 		var queryString = document.location.href;
 		var url = new URL(queryString);
         	var firstName = url.searchParams.get("firstName");
@@ -32,6 +33,11 @@
 		  "transcriptFields": ["Last_Name__c"],
 		  "value": lastName
 		}];
+		
+		embedded_svc.settings.prepopulatedPrechatFields = {
+		    FirstName: firstName,
+		    LastName: lastName
+		};
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
